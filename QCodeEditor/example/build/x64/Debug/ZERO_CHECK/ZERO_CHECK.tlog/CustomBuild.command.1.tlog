@@ -1,0 +1,10 @@
+^C:\USERS\BALKUNOV\DESKTOP\PROJECTS\TESTSTAND\QCODEEDITOR\EXAMPLE\BUILD\CMAKEFILES\610C7D7287910B24CD7DDC200768697E\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example -BC:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/build/QCodeEditorExample.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

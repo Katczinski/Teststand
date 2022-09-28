@@ -1,0 +1,5 @@
+C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/build-example-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/CMakeFiles/QCodeEditorExample.dir
+C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/build-example-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/CMakeFiles/edit_cache.dir
+C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/build-example-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/CMakeFiles/rebuild_cache.dir
+C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/build-example-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/CMakeFiles/QCodeEditorExample_autogen_timestamp_deps.dir
+C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/build-example-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/CMakeFiles/QCodeEditorExample_autogen.dir

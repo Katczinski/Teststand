@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\build\QCodeEditor_autogen\mocs_compilation_Debug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\src\internal\QCodeEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\src\internal\QLineNumberArea.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\src\internal\QCXXHighlighter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\src\internal\QSyntaxStyle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\src\internal\QStyleSyntaxHighlighter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\src\internal\QGLSLCompleter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\src\internal\QGLSLHighlighter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\src\internal\QLanguage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\src\internal\QXMLHighlighter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\src\internal\QJSONHighlighter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\src\internal\QLuaCompleter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\src\internal\QLuaHighlighter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\src\internal\QPythonCompleter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\src\internal\QPythonHighlighter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\src\internal\QFramedTextAttribute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\build\QCodeEditor_autogen\3YJK5W5UP7\qrc_qcodeeditor_resources.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\build\QCodeEditor_autogen\mocs_compilation_Release.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\build\QCodeEditor_autogen\mocs_compilation_MinSizeRel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\build\QCodeEditor_autogen\mocs_compilation_RelWithDebInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\internal\QHighlightRule.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\internal\QHighlightBlockRule.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\internal\QCodeEditor.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\internal\QCXXHighlighter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\internal\QLineNumberArea.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\internal\QStyleSyntaxHighlighter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\internal\QSyntaxStyle.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\internal\QGLSLCompleter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\internal\QGLSLHighlighter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\internal\QLanguage.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\internal\QXMLHighlighter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\internal\QJSONHighlighter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\internal\QLuaCompleter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\internal\QLuaHighlighter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\internal\QPythonCompleter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\internal\QPythonHighlighter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\internal\QFramedTextAttribute.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\build\CMakeFiles\f96ff6b48e42b25729cd90d9bf0dad36\qrc_qcodeeditor_resources.cpp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\resources\qcodeeditor_resources.qrc" />
+    <None Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\QHighlightRule" />
+    <None Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\QHighlightBlockRule" />
+    <None Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\QCodeEditor" />
+    <None Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\QCXXHighlighter" />
+    <None Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\QLineNumberArea" />
+    <None Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\QStyleSyntaxHighlighter" />
+    <None Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\QSyntaxStyle" />
+    <None Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\QGLSLCompleter" />
+    <None Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\QGLSLHighlighter" />
+    <None Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\QLanguage" />
+    <None Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\QXMLHighlighter" />
+    <None Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\QJSONHighlighter" />
+    <None Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\QLuaCompleter" />
+    <None Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\QLuaHighlighter" />
+    <None Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\QPythonHighlighter" />
+    <None Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\include\QFramedTextAttribute" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{BDEA1D4F-AE39-3B58-9673-079201503F54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{373C9CFC-764A-334C-B292-6633256E7B20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{3A1981F6-D48E-32FD-9316-C8B9EBBE5DBF}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

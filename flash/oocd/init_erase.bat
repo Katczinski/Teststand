@@ -1,0 +1,1 @@
+openocd -f target/komega_basic/init_erase.cfg

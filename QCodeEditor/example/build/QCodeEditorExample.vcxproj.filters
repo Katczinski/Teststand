@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\example\build\QCodeEditorExample_autogen\mocs_compilation_Debug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\example\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\example\src\MainWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\example\build\QCodeEditorExample_autogen\3YJK5W5UP7\qrc_demo_resources.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\example\build\QCodeEditorExample_autogen\mocs_compilation_Release.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\example\build\QCodeEditorExample_autogen\mocs_compilation_MinSizeRel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\example\build\QCodeEditorExample_autogen\mocs_compilation_RelWithDebInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\example\include\MainWindow.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\example\build\CMakeFiles\a8f8e758fa612210fd25252f8a1f865a\qrc_demo_resources.cpp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\example\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\balkunov\Desktop\Projects\Teststand\QCodeEditor\example\resources\demo_resources.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{92037F5F-FCE6-32E3-9A1B-70E0B4069474}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{3CEEB58C-F190-31A2-A7D3-2D0899904E62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{71C18D35-A9DF-3CE4-8E21-202D33A3AD91}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

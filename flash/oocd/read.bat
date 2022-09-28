@@ -1,0 +1,1 @@
+openocd -f target/komega_basic/init.cfg -f target/komega_basic/read_flash.cfg

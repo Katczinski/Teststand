@@ -1,0 +1,36 @@
+{
+	"BUILD_DIR" : "C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/build/QCodeEditorExample_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example",
+	"CMAKE_SOURCE_DIR" : "C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example",
+	"INCLUDE_DIR" : "C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/build/QCodeEditorExample_autogen/include",
+	"INCLUDE_DIR_Debug" : "C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/build/QCodeEditorExample_autogen/include_Debug",
+	"INCLUDE_DIR_MinSizeRel" : "C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/build/QCodeEditorExample_autogen/include_MinSizeRel",
+	"INCLUDE_DIR_RelWithDebInfo" : "C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/build/QCodeEditorExample_autogen/include_RelWithDebInfo",
+	"INCLUDE_DIR_Release" : "C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/build/QCodeEditorExample_autogen/include_Release",
+	"INPUTS" : 
+	[
+		"C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/resources/styles/drakula.xml",
+		"C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/resources/code_samples/python.py",
+		"C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/resources/code_samples/xml.xml",
+		"C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/resources/code_samples/json.json",
+		"C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/resources/code_samples/shader.glsl",
+		"C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/resources/code_samples/cxx.cpp",
+		"C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/resources/code_samples/lua.lua"
+	],
+	"LOCK_FILE" : "C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/build/CMakeFiles/QCodeEditorExample_autogen.dir/AutoRcc_demo_resources_3YJK5W5UP7_Lock.lock",
+	"MULTI_CONFIG" : true,
+	"OPTIONS" : [ "-name", "demo_resources" ],
+	"OUTPUT_CHECKSUM" : "3YJK5W5UP7",
+	"OUTPUT_NAME" : "qrc_demo_resources.cpp",
+	"RCC_EXECUTABLE" : "C:/Qt/5.15.2/mingw81_32/bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/build/CMakeFiles/QCodeEditorExample_autogen.dir/AutoRcc_demo_resources_3YJK5W5UP7_Used.txt",
+	"SETTINGS_FILE_Debug" : "C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/build/CMakeFiles/QCodeEditorExample_autogen.dir/AutoRcc_demo_resources_3YJK5W5UP7_Used_Debug.txt",
+	"SETTINGS_FILE_MinSizeRel" : "C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/build/CMakeFiles/QCodeEditorExample_autogen.dir/AutoRcc_demo_resources_3YJK5W5UP7_Used_MinSizeRel.txt",
+	"SETTINGS_FILE_RelWithDebInfo" : "C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/build/CMakeFiles/QCodeEditorExample_autogen.dir/AutoRcc_demo_resources_3YJK5W5UP7_Used_RelWithDebInfo.txt",
+	"SETTINGS_FILE_Release" : "C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/build/CMakeFiles/QCodeEditorExample_autogen.dir/AutoRcc_demo_resources_3YJK5W5UP7_Used_Release.txt",
+	"SOURCE" : "C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/resources/demo_resources.qrc",
+	"VERBOSITY" : 0
+}
