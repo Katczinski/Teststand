@@ -9,16 +9,23 @@ modif = sys.argv[2]     # 4
 
 #============================definitions=================================
 
+def getD2xxStatus(e):
+    logString(e.FtdiGetStatus())
+    logString(e.SpiGetStatus())
+    logString(e.Modbus1GetStatus())
+    logString(e.Modbus2GetStatus())
+
 def Test():
     e = D2xx()
+    getD2xxStatus(e)
     e.SpiSetPowerState(True)
     time.sleep(3)
-    TestITwoC(e, module)
-    ModbusSetSlave(e, 4)
-    TestModbus(e, 2, 10)
-    TestModbus(e, 1, 10)
-    TestUSB(e)
-    time.sleep(1)
+#    TestITwoC(e, module)
+#    ModbusSetSlave(e, 4)
+#    TestModbus(e, 2, 10)
+#    TestModbus(e, 1, 10)
+#    TestUSB(e)
+#    time.sleep(1)
     e.SpiSetPowerState(False)
 
 def setPowerState(state):

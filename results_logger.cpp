@@ -75,6 +75,14 @@ void Results_Logger::LogResult(const QString &text)
            text + "<br>");
 }
 
+void Results_Logger::LogString(const QString &text)
+{
+    append("<span style='color: darkgrey'>" +
+           QDateTime::currentDateTime().toString("mm.ss: ") +
+           "</span>" +
+           text);
+}
+
 void Results_Logger::LogHeader(const QString& text)
 {
     append("<span style='font-size: 14px; color: darkblue'>" + text + "</span>");

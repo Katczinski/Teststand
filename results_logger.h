@@ -12,6 +12,7 @@ public:
     void Start();
     void Stop(/*QImage image, int type, bool result*/);
     void LogResult(const QString &text);
+    void LogString(const QString &text);
     void LogHeader(const QString &text);
     void ScrollToLine(int line);
     void ScrollToBeginning();

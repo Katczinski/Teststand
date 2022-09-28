@@ -236,7 +236,7 @@ void MainWindow::parseLine(QString line)
     } else if (line.left(7) == "header:") {
         results->LogHeader(line.remove("header:"));
     } else if (line.left(6) == "print:")
-        results->LogResult(line.remove("print:"));
+        results->LogString(line.remove("print:"));
 }
 
 void MainWindow::flash()
@@ -327,7 +327,7 @@ void MainWindow::on_start_clicked()
     results_window->show();
     tests_counter.Reset();
 
-    results->append(start_time.toString("mm:ss") + " Тест начался<br>");
+    results->LogResult("Тест начался");
 
     if (ui->flash->isChecked())
         flash();
