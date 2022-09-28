@@ -14,6 +14,24 @@ MainWindow::MainWindow(QWidget *parent)
     dir.cd("scripts");
     filedialog.setDirectory(dir);
     createActions();
+    results = new Results_Logger();
+    results_window = new Results_Window(results);
+    results_window->right_layout->addWidget(results);
+    results_window->left_layout->addWidget(&tests_counter);
+
+    connect(results_window, &Results_Window::windowClosed, [this]() { fail = true; });
+    connect(tests_counter.button_close, &QPushButton::clicked,
+            results_window, [this]{
+        results_window->close();
+        fail = true; //stopping test
+//        scan->hasFinished = false; //
+    });
+    connect(tests_counter.button_restart, &QPushButton::clicked,
+            results_window, [this]{
+        fail = true; //stopping test
+//        scan->hasFinished = false; //
+//        QMetaObject::invokeMethod(this, &Interpreter::Start, Qt::QueuedConnection);
+    });
 
 }
 
@@ -51,7 +69,7 @@ void MainWindow::createActions()
 
     fileToolBar->addSeparator();
     QShortcut *shortcut_start = new QShortcut(QKeySequence("Ctrl+R"), this);
-    connect(shortcut_start, &QShortcut::activated, this, &MainWindow::start);
+    connect(shortcut_start, &QShortcut::activated, this, &MainWindow::on_start_clicked);
 
     connect(ui->codeEditor, &QCodeEditor::includeFileClicked, this, [this](QString text){
        openFile(dir.filePath(text + ".py"));
@@ -178,15 +196,20 @@ void MainWindow::start()
     QProcess *process = new QProcess();
     QString cmd = "python";
     QString args = "-u " + curFile + " " + ui->module->currentText()[0] + " " + ui->modification->currentText(); // -u for disabling stdout buffering
-    connect(process, &QProcess::readyRead, [&process](){
+    auto lambda = connect(results_window, &Results_Window::windowClosed, process, &QProcess::kill);
+    connect(process, &QProcess::readyRead, [this, &process](){
         while (process->canReadLine()) {
            QString line = QString::fromLocal8Bit(process->readLine());
            line.replace("\r\n", "");
+           parseLine(line);
            qDebug() << line;
         }
     });
-    connect(process, &QProcess::readyReadStandardError, [&process](){
-        qDebug() << process->readAllStandardError();
+
+    connect(process, &QProcess::readyReadStandardError, [this, &process](){
+        QByteArray err = process->readAllStandardError();
+        results->LogResult(QString(err));
+        qDebug() << err;
     });
     connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [&loop, &process](){
         process->deleteLater();
@@ -199,13 +222,28 @@ void MainWindow::start()
     process->start();
     if (process->state() == QProcess::Running)
         loop.exec();
+    QObject::disconnect(lambda);
     started = false;
+}
+
+void MainWindow::parseLine(QString line)
+{
+    if (line.left(7) == "result:") {
+        if (line.contains("OK"))
+            results->LogResult("<span style='color:green'>&nbsp;<b>Успешно</b>&nbsp;</span>");
+        else if (line.contains("FAIL"))
+            results->LogResult("<span style='color:white; background:red'>&nbsp;<b>Провалено</b>&nbsp;</span>");
+    } else if (line.left(7) == "header:") {
+        results->LogHeader(line.remove("header:"));
+    } else if (line.left(6) == "print:")
+        results->LogResult(line.remove("print:"));
 }
 
 void MainWindow::flash()
 {
     if (started)
         return;
+    results->LogHeader("Прошивка");
     started = true;
     QStringList info = { "4111150302111120",
                          ui->serialnum->text(),
@@ -232,21 +270,29 @@ void MainWindow::flash()
                     -c \"program ../firmware/") + ui->modification->currentText() + QString(".hex verify\" \
                     -f target\\komega_basic\\finish.cfg");
     bool is_ok = true;
-    connect(process, &QProcess::readyReadStandardError, this, [&process](){
-        qDebug() << process->readAllStandardError();
-    });
-    connect(process, &QProcess::errorOccurred, this, [&is_ok, &loop](QProcess::ProcessError error){
+
+    connect(process, &QProcess::errorOccurred, this, [this, &is_ok, &loop](QProcess::ProcessError error){
         qDebug() << "QProcess error" << error;
         QString err = error == QProcess::ProcessError::FailedToStart ? "Ошибка запуска" : "Неизвесная ошибка";
         is_ok = false;
+        results->LogResult(err);
+        results->LogResult("<span style='color:white; background:red'>&nbsp;<b>Провалено</b>&nbsp;</span>");
         loop.quit();
     });
 
     auto lambda = connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
-            [&is_ok, &loop, &process](int exitCode, QProcess::ExitStatus exitStatus){
+            [this, &is_ok, &loop, &process](int exitCode, QProcess::ExitStatus exitStatus){
         QByteArray res = process->readAllStandardError();
+        qDebug() << "result:\n" << res;
         QString dir_name = "//A2/kT.teststand.logs/" + QHostInfo::localHostName() + "/oocd/";
         QString filename = "dl_" + QDateTime::currentDateTime().toString("d-MMM-yyyy_hh-mm-ss") + ".txt";
+
+        if (!exitCode)
+            results->LogResult("<span style='color:green'>&nbsp;<b>Успешно</b>&nbsp;</span>");
+        else {
+            results->LogResult(QString(res));
+            results->LogResult("<span style='color:white; background:red'>&nbsp;<b>Провалено</b>&nbsp;</span>");
+        }
 //        QDir().mkpath(dir_name);
 //        QFile log(dir_name + filename);
 //        if (log.open(QIODevice::WriteOnly)) {
@@ -257,20 +303,42 @@ void MainWindow::flash()
         qDebug() << "process finished with exitCode" << exitCode << "exitStatus" << exitStatus;
         loop.quit();
     });
+    D2xx *d2xx = new D2xx();
+    d2xx->SpiSetPowerState(true);
     process->setNativeArguments(args);
     process->setProgram(cmd);
     process->start();
     if (process->state() == QProcess::Running)
         loop.exec();
+    d2xx->SpiSetPowerState(false);
+    delete d2xx;
     started = false;
 }
 
 void MainWindow::on_start_clicked()
 {
-    if (ui->flash->isChecked()) {
+    QTime start_time = QTime::currentTime();
+    QTime elapsed(0,0);
+    QTime finish_time;
+
+    results_window->hide();
+    results->Start();
+    results_window->setFocus();
+    results_window->show();
+    tests_counter.Reset();
+
+    results->append(start_time.toString("mm:ss") + " Тест начался<br>");
+
+    if (ui->flash->isChecked())
         flash();
-    }
     if (ui->test->isChecked())
         start();
+
+    tests_counter.Result();
+    finish_time = QTime::currentTime();
+    elapsed = elapsed.addSecs(start_time.secsTo(finish_time));
+    results->append("\nПродолжительность теста: " + elapsed.toString("mm:ss"));
+    results->ScrollToEnd();
+    results->setTextInteractionFlags(Qt::TextBrowserInteraction);
 }
 

@@ -1,4 +1,4 @@
-QT       += core gui widgets network
+QT       += core gui widgets network quick
 
 CONFIG += c++17
 
@@ -24,8 +24,13 @@ SOURCES += \
     CodeEditor/QXMLHighlighter.cpp \
     flash/form_bin_file.cpp \
     flash/get_adv_cipher.cpp \
+    komega_type_to_text.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    popup.cpp \
+    results_logger.cpp \
+    results_window.cpp \
+    testscounter.cpp
 
 HEADERS += \
     CodeEditor/QCXXHighlighter.hpp \
@@ -47,7 +52,12 @@ HEADERS += \
     CodeEditor/QXMLHighlighter.hpp \
     flash/form_bin_file.h \
     flash/get_adv_cipher.h \
-    mainwindow.h
+    komega_type_to_text.h \
+    mainwindow.h \
+    popup.h \
+    results_logger.h \
+    results_window.h \
+    testscounter.h
 
 FORMS += \
     mainwindow.ui
@@ -68,3 +78,10 @@ DISTFILES += \
     CodeEditor/resources/languages/glsl.xml \
     CodeEditor/resources/languages/lua.xml \
     CodeEditor/resources/languages/python.xml
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/external/D2xx/ -llibd2xx.dll
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/external/D2xx/ -llibd2xx.dll
+else:unix: LIBS += -L$$PWD/external/D2xx/ -llibd2xx.dll
+
+INCLUDEPATH += $$PWD/external/D2xx/include
+DEPENDPATH += $$PWD/external/D2xx/include

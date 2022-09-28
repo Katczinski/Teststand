@@ -22,6 +22,10 @@
 #include <QHostInfo>
 #include <QNetworkInterface>
 #include "form_bin_file.h"
+#include "results_logger.h"
+#include "results_window.h"
+#include "testscounter.h"
+#include "d2xx.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -38,6 +42,7 @@ private slots:
     void on_start_clicked();
 
 private:
+    void parseLine(QString line);
     void createActions();
     bool save();
     void AskToSave();
@@ -56,6 +61,10 @@ private:
     QString         curFile;
     QFileDialog     filedialog;
     bool            started = false;
+    Results_Logger  *results;
+    Results_Window  *results_window;
+    TestsCounter    tests_counter;
+    bool            fail = false;
 
 
 };

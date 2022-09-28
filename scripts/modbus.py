@@ -1,5 +1,5 @@
 from libd2xx import *
-
+from logger  import *
 def ModbusSetSlave(e, addr):
     if addr == 1:
         addr = 2 #base module addr is 2 instead of default 1
@@ -9,6 +9,7 @@ def ModbusSetSlave(e, addr):
     e.Modbus2SetSlave(chr(addr))
 
 def TestModbus(e, modbus, tests):
+    logHeader("Проверка Modbus" + str(modbus))
     tests_ok = 0
     if modbus == 1:
         for x in range(1, tests + 1):
@@ -21,6 +22,6 @@ def TestModbus(e, modbus, tests):
     e.Modbus1Purge()
     e.Modbus2Purge()
     if tests_ok == tests:
-        return "Modbus" + str(modbus) + " is ok"
+        return logResult("OK")
     else:
-        return "Modbus" + str(modbus) + " failed"
+        return logResult("FAIL")

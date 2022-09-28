@@ -69,7 +69,7 @@ void QCodeEditor::mouseDoubleClickEvent(QMouseEvent *e)
         auto text = cursor.selectedText();
 
         QString import = "from ";
-        QStringList parts = text.split(' ');
+        QStringList parts = text.split(' ', Qt::SkipEmptyParts);
         if (parts.length() == 4 && parts[0] == "from" && parts[2] == "import") {
             emit includeFileClicked(parts[1]);
         }
@@ -572,9 +572,7 @@ void QCodeEditor::keyPressEvent(QKeyEvent* e) {
     }
     if (e->key() == Qt::Key_Delete && e->modifiers() == Qt::ShiftModifier) {
         QTextCursor cursor = this->textCursor();
-        if (!cursor.selection().isEmpty()) {
-            cursor.removeSelectedText();
-        } else {
+        if (cursor.selection().isEmpty()) {
             if (!cursor.movePosition(QTextCursor::MoveOperation::NextBlock)) {
                 cursor.movePosition(QTextCursor::MoveOperation::EndOfBlock);
                 cursor.movePosition(QTextCursor::MoveOperation::PreviousBlock, QTextCursor::KeepAnchor);
@@ -583,8 +581,11 @@ void QCodeEditor::keyPressEvent(QKeyEvent* e) {
                 cursor.movePosition(QTextCursor::MoveOperation::PreviousBlock, QTextCursor::KeepAnchor);
                 cursor.movePosition(QTextCursor::MoveOperation::StartOfLine, QTextCursor::KeepAnchor);
             }
-            cursor.removeSelectedText();
         }
+        QString text = cursor.selectedText();
+        QClipboard* clipboard = QApplication::clipboard();
+        clipboard->setText(text, QClipboard::Clipboard);
+        cursor.removeSelectedText();
         this->setTextCursor(cursor);
     }
     if (m_autoIndentation &&

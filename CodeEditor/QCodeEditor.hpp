@@ -2,7 +2,8 @@
 
 // Qt
 #include <QTextEdit> // Required for inheritance
-
+#include <QApplication>
+#include <QClipboard>
 class QCompleter;
 class QLineNumberArea;
 class QSyntaxStyle;
