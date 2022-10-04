@@ -267,6 +267,7 @@ void MainWindow::flash()
     QString args = QString("-f target\\komega_basic\\init.cfg \
                     -c \"program ../firmware/") + ui->modification->currentText() + QString("b.hex verify\" \
                     -c \"program ../firmware/cipher.bin verify 0x100FE000\" \
+                    -c \"program ../firmware/ip.bin verify 0x100FC060\" \
                     -c \"program ../firmware/") + ui->modification->currentText() + QString(".hex verify\" \
                     -f target\\komega_basic\\finish.cfg");
     bool is_ok = true;

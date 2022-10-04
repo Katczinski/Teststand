@@ -16,20 +16,23 @@
 
 #pragma pack(1)
 struct kb_eg {
-    uint32_t    serialnum;
-    uint32_t    rev;
-    uint32_t    since_epoch;
-    uint32_t    modif;
-    uint32_t    cipher[16];
-    char        ext_cipher[12];
-    uint32_t    mac[2]; // 00-FF-38-34-96-A5 (random)
-    uint32_t    ip;     // 172.16.7.77
-    uint32_t    mask;   // 255.255.252.0
-    uint32_t    gateway;// 172.16.4.2
-    uint32_t    info[2];
+    uint32_t    serialnum;              // 0x100FE000   Серийный номер устройства
+    uint32_t    rev;                    // 0x100FE004   Номер ревизии
+    uint32_t    since_epoch;            // 0x100FE008   Время последней заводской прошивки
+    uint32_t    modif;                  // 0x100FE00C   Адрес модификации модуля
+    uint32_t    cipher[16];             // 0x100FE010   Аппаратный шифр устройства
+    char        ext_cipher[12];         // 0x100FE050   Адрес расширенного аппаратного шифра
+    char        mac[8] = {0};           // 0x100FE05C   MAC адрес устройства
+//    uint32_t    info[2];
 };
 #pragma pack()
-
+#pragma pack(1)
+struct bin_ip {
+    uint32_t    ip;                     // 0x100FC060
+    uint32_t    mask;                   // 0x100FC064
+    uint32_t    gateway;                // 0x100FC068
+};
+#pragma pack()
 #pragma pack(1)
 struct bin {
     char        cipher[124];
