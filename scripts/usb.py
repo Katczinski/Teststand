@@ -16,22 +16,26 @@ def TestUSB(e):
     print(port)
 
     command = b'\xF0\x04\x06\xA4\x00\x03\xE4\x41'
-    ser = serial.Serial(port.name,
+    try:
+        ser = serial.Serial(port.name,
                         baudrate=115200,\
                         parity=serial.PARITY_NONE,\
                         stopbits=serial.STOPBITS_ONE,\
                         bytesize=serial.EIGHTBITS,\
                         timeout=0)
-    time.sleep(2)
-    ser.write(command)
-    time.sleep(2)
-    sout = bytearray()
-    while ser.inWaiting() > 0:
-        sout.extend(ser.read(1))
-    print(sout)
-    is_ok = False
-    if (len(sout) > 8):
-        if sout[4] == 0x11 and sout[6] == 0x22 and sout[8] == 0x33:
-            is_ok = True
-    ser.close()
-    return logResult("OK" if is_ok else "FAIL")
+        time.sleep(2)
+        ser.write(command)
+        time.sleep(2)
+        sout = bytearray()
+        while ser.inWaiting() > 0:
+            sout.extend(ser.read(1))
+        print(sout)
+        is_ok = False
+        if (len(sout) > 8):
+            if sout[4] == 0x11 and sout[6] == 0x22 and sout[8] == 0x33:
+                is_ok = True
+        ser.close()
+        return logResult("OK" if is_ok else "FAIL")
+    except:
+        logString("Не удалось подключиться")
+        return logResult("FAIL")
