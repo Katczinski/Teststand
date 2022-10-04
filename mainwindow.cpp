@@ -325,9 +325,9 @@ void MainWindow::on_start_clicked()
     results_window->hide();
     results->Start();
     results_window->setFocus();
-    results_window->show();
-    tests_counter.Reset();
 
+    tests_counter.Reset();
+    results_window->show();
     results->LogResult("Тест начался");
 
     if (ui->flash->isChecked())
