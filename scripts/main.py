@@ -20,12 +20,12 @@ def Test():
     getD2xxStatus(e)
     e.SpiSetPowerState(True)
     time.sleep(3)
-#    TestITwoC(e, module)
-#    ModbusSetSlave(e, 4)
-#    TestModbus(e, 2, 10)
-#    TestModbus(e, 1, 10)
-#    TestUSB(e)
-#    time.sleep(1)
+    TestITwoC(e, module)
+    ModbusSetSlave(e, 4)
+    TestModbus(e, 2, 10)
+    TestModbus(e, 1, 10)
+    TestUSB(e)
+    time.sleep(1)
     e.SpiSetPowerState(False)
 
 def setPowerState(state):
@@ -39,7 +39,8 @@ def ResetPower():
     e.SpiSetPowerState(True)
 
 #==================================test==================================
-Test()
+#Test()
 #setPowerState(False)
+#time.sleep(5)
 #setPowerState(True)
-#ResetPower()
+ResetPower()
