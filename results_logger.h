@@ -8,7 +8,7 @@ class Results_Logger : public QTextEdit
     Q_OBJECT
      QFile file;
 public:
-    explicit Results_Logger(QTextEdit *parent = nullptr);
+    explicit Results_Logger(QWidget *parent = nullptr);
     void Start();
     void Stop(/*QImage image, int type, bool result*/);
     void LogResult(const QString &text);
