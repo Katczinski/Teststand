@@ -11,7 +11,7 @@
 //#include "log_to_file.h"
 #include "popup.h"
 #include <iostream>
-Results_Logger::Results_Logger(QTextEdit *parent) : QTextEdit(parent)
+Results_Logger::Results_Logger(QWidget *parent) : QTextEdit(parent)
 {
     setMinimumWidth(600);
     setFont(QFont("sans-serif", 10));
@@ -72,7 +72,7 @@ void Results_Logger::LogResult(const QString &text)
     append("<span style='color: darkgrey'>" +
            QDateTime::currentDateTime().toString("mm.ss: ") +
            "</span>" +
-           text + "<br>");
+           text);
 }
 
 void Results_Logger::LogString(const QString &text)
@@ -85,7 +85,7 @@ void Results_Logger::LogString(const QString &text)
 
 void Results_Logger::LogHeader(const QString& text)
 {
-    append("<span style='font-size: 14px; color: darkblue'>" + text + "</span>");
+    append("<br><span style='font-size: 14px; color: darkblue'>" + text + "</span>");
     textCursor().movePosition(QTextCursor::End);
 }
 
