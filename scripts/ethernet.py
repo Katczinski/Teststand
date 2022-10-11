@@ -9,7 +9,7 @@ def GetIP(ser):
     logHeader("Получение IP")
     command = b'\xF0\x03\x13\xEC\x00\x14\x95\x95'
     try:
-        time.sleep(6)
+        time.sleep(7)
         ser.write(command)
         time.sleep(2)
         sout = bytearray()
@@ -33,7 +33,7 @@ def TurnOnDHCP(e, ser):
         ser.write(command)
         time.sleep(2)
         ser.read(100)
-        time.sleep(6)
+        time.sleep(7)
         e.SpiSetPowerState(False)
         time.sleep(2.5)
         e.SpiSetPowerState(True)
@@ -49,7 +49,7 @@ def TestEthernet(TCP_IP):
 
     logHeader("Проверка Ethernet")
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    
+
     try:
         logString("Подключение к " + TCP_IP + ":" + str(TCP_PORT))
         s.connect((TCP_IP, TCP_PORT))
@@ -62,8 +62,10 @@ def TestEthernet(TCP_IP):
                 is_ok = True
     except Exception as e:
         logString(e)
-    s.close()
+#    s.close()
     if is_ok:
-        return logResult("OK")
+        logResult("OK")
+        return s
     else:
-        return logResult("FAIL")
+        logResult("FAIL")
+        return None
