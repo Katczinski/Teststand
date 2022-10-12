@@ -211,9 +211,10 @@ void MainWindow::start()
         results->LogResult(QString(err));
         qDebug() << err;
     });
-    connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [&loop, &process](){
+
+    connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [&loop, &process](int exitCode, QProcess::ExitStatus exitStatus){
         process->deleteLater();
-        qDebug() << "process finished";
+        qDebug() << "process finished with exitCode" << exitCode << "exitStatus" << exitStatus;
         loop.quit();
     });
     process->setNativeArguments(args);
@@ -228,14 +229,14 @@ void MainWindow::start()
 
 void MainWindow::parseLine(QString line)
 {
-    if (line.left(7) == "result:") {
+    if (line.size() >= 7 && line.left(7) == "result:") {
         if (line.contains("OK"))
             results->LogResult("<span style='color:green'>&nbsp;<b>Успешно</b>&nbsp;</span>");
         else if (line.contains("FAIL"))
             results->LogResult("<span style='color:white; background:red'>&nbsp;<b>Провалено</b>&nbsp;</span>");
-    } else if (line.left(7) == "header:") {
+    } else if (line.size() >= 7 && line.left(7) == "header:") {
         results->LogHeader(line.remove("header:"));
-    } else if (line.left(6) == "print:")
+    } else if (line.size() >= 6 && line.left(6) == "print:")
         results->LogString(line.remove("print:"));
 }
 
@@ -245,7 +246,7 @@ void MainWindow::flash()
         return;
     results->LogHeader("Прошивка");
     started = true;
-    QStringList info = { "4111150302111120",
+    QStringList info = { ui->cipher->text(),
                          ui->serialnum->text(),
                          ui->modification->currentText(),
                          ui->module->currentText().split(" - ")[0],

@@ -54,7 +54,7 @@ def TestEthernet(TCP_IP):
         logString("Подключение к " + TCP_IP + ":" + str(TCP_PORT))
         s.connect((TCP_IP, TCP_PORT))
         s.send(MESSAGE)
-        s.settimeout(3)
+        s.settimeout(3.0)
         data = s.recv(1024)
         print("Получен ответ " + str(data))
         if (len(data) > 14):

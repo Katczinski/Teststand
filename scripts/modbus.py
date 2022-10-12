@@ -4,10 +4,10 @@ from serial_port import *
 import time
 
 def ModbusSetSlave(e, addr):
-    if addr == 1:
-        addr = 2 #base module addr is 2 instead of default 1
-    elif addr == 4:
-        addr = 240
+#    if addr == 1:
+#        addr = 2 #base module addr is 2 instead of default 1
+#    elif addr == 4:
+#        addr = 240
     e.Modbus1SetSlave(chr(addr))
     e.Modbus2SetSlave(chr(addr))
 
