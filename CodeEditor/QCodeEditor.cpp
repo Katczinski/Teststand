@@ -68,10 +68,13 @@ void QCodeEditor::mouseDoubleClickEvent(QMouseEvent *e)
         cursor.movePosition(QTextCursor::StartOfLine, QTextCursor::KeepAnchor);
         auto text = cursor.selectedText();
 
-        QString import = "from ";
         QStringList parts = text.split(' ', Qt::SkipEmptyParts);
         if (parts.length() == 4 && parts[0] == "from" && parts[2] == "import") {
             emit includeFileClicked(parts[1]);
+        } else {
+            auto cursor = cursorForPosition(e->pos());
+            cursor.select(QTextCursor::WordUnderCursor);
+            setTextCursor(cursor);
         }
     } else
         QCodeEditor::mouseDoubleClickEvent(e); // You may have to call the parent's method for other cases
