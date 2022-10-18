@@ -9,7 +9,6 @@ def GetIP(ser):
     logHeader("Получение IP")
     command = b'\xF0\x03\x13\xEC\x00\x14\x95\x95'
     try:
-        time.sleep(7)
         ser.write(command)
         time.sleep(2)
         sout = bytearray()
@@ -38,6 +37,7 @@ def TurnOnDHCP(e, ser):
         time.sleep(2.5)
         e.SpiSetPowerState(True)
         ser.read(100)
+        time.sleep(7)
     except Exception as e:
         logString(e) 
         

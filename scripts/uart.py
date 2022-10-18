@@ -3,21 +3,13 @@ from logger  import *
 from serial_port import *
 import time
 
-def ModbusSetSlave(e, addr):
-#    if addr == 1:
-#        addr = 2 #base module addr is 2 instead of default 1
-#    elif addr == 4:
-#        addr = 240
-    e.Modbus1SetSlave(chr(addr))
-    e.Modbus2SetSlave(chr(addr))
-
-def TestModbus(e, sock):
-    logHeader("Проверка Modbus")
-    command = b'\x00\x38\x00\x00\x00\x06\x10\x04\x06\xA4\x00\x03'
+def TestUart(e, sock):
+    logHeader("Проверка Uart")
+    command = b'\x00\x38\x00\x00\x00\x06\x61\x04\x06\xA4\x00\x03'
     cmd = "\x01\x04\x06\x01\x02\x03\x04\x05\x06"
     try:
         e.Modbus2Purge()
-        e.Modbus2SetBaudRate(115200)
+        e.Modbus2SetBaudRate(9600)
         e.Modbus2SetSlave(chr(1))
             
         out = ByteArray(chr(0), 1)
@@ -41,7 +33,7 @@ def TestModbus(e, sock):
         logString("read: " + str(res))
         time.sleep(1)
         
-        if data[6:] == b'\x10\x04\x06\x01\x02\x03\x04\x05\x06' :
+        if data[6:] == b'\x61\x04\x06\x01\x02\x03\x04\x05\x06' :
             return logResult("OK")
         else:
             return logResult("FAIL")

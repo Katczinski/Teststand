@@ -1,19 +1,26 @@
-from libd2xx  import *
-from I2C      import *
-from modbus   import *
-from usb      import *
-from logger   import *
-from ethernet import *
-from rs485    import *
-from serial_port import *
+from libd2xx      import *
+from I2C          import *
+from modbus       import *
+from usb          import *
+from logger       import *
+from ethernet     import *
+from rs485        import *
+from serial_port  import *
+from uart         import *
+from clock        import *
+import time
 
 if len(sys.argv) > 2:
     module = sys.argv[1]    # 4
-    modif = sys.argv[2]     # 4
+    modif  = sys.argv[2]    # 4
 else:
     module = 4
     modif = 4
 #============================definitions=================================
+
+def PrintBytearray(array):
+    res = ' '.join(format(x, '02x') for x in array)
+    logString("array: " + str(res))
 
 def setPowerState(state):
     e = D2xx()
@@ -48,49 +55,35 @@ def Test():
     e = D2xx()
     getD2xxStatus(e)
     e.SpiSetPowerState(True)
-    time.sleep(3)
+    time.sleep(1)
     ser = GetPort()
-    try:      
+    try:
 #        SwitchMode(ser, True)  
 #        TestUSB(e, ser)
 #==================Get ip and socket dynamically==================
 #        TurnOnDHCP(e, ser)
 #        ip = GetIP(ser)
-#        sock = TestEthernet(ip)
+#        sock = TestEthernet(ip) #'192.168.0.111'
 #=========================Use custom ip===========================
-        TCP_IP = '172.16.5.71'
+        TCP_IP = '192.168.0.114'
         TCP_PORT = 502
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect((TCP_IP, TCP_PORT))
-        sock.settimeout(3.0)
+        sock.settimeout(1.0)
 #=================================================================
-        try:
-#            TestITwoC(e, module)
-#            TestModbus(e, sock)
-            for i in range(50):
-                logString("loop " + str(i))
-                command = b'\x00\x38\x00\x00\x00\x06\x21\x04\x06\xA4\x00\x03'
-                e.Modbus2Purge()
-                sock.send(command)
-                res = ' '.join(format(x, '02x') for x in command)
-                logString("sent: " + str(res))
-                e.Modbus2SetSlave(chr(33))
-                print("slave set to 33")
-                out = ByteArray(chr(0), 1)
-                e.Modbus2ReadMessage(out)
-#                TestLeftRs(e, sock)
-#            TestRightRs(e, sock)
-        except Exception as ex:
-            logString(ex)
-        finally:
-            sock.close()
-        time.sleep(1)
+#        TestUart(e, sock)
+#        TestISquareC(e, module)
+#        TestModbus(e, sock)
+#        TestLeftRs(e, sock)
+#        TestRightRs(e, sock)
+        TestClock(e, ser)
+        sock.close()
     except Exception as ex:
         logString(ex)
     finally:
 #        SwitchMode(ser, False)
         ser.close()
-        e.SpiSetPowerState(False)
+#        e.SpiSetPowerState(False)
 
 #==================================main==================================
 #ResetPower()

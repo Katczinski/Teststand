@@ -3,7 +3,7 @@ import sys
 from libd2xx import *
 from logger  import *
 
-def TestITwoC(e, type):
+def TestISquareC(e, type):
     logHeader("Проверка I2C")
     addr = chr(120)
     if type == 1:
@@ -20,7 +20,7 @@ def TestITwoC(e, type):
         logString("Нет доступа к левому I2C (проверьте подключение)")
         return  logResult("FAIL")
     time.sleep(0.02)
-    array = ByteArray(set_i2c_addr_cmd, sys.getsizeof(set_i2c_addr_cmd))
+    array = ByteArray(set_i2c_addr_cmd)
     e.SpiWriteI2c(array, I2C2, ord(addr))
     time.sleep(0.3)
     read = e.SpiReadI2c(set_i2c_address, 3, I2C1, addr)
