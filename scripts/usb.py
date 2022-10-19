@@ -9,6 +9,7 @@ def TestUSB(e, ser):
     try:
         
         time.sleep(2)
+        ser.read(100)
         ser.write(command)
         time.sleep(2)
         sout = bytearray()

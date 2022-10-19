@@ -58,14 +58,14 @@ def Test():
     time.sleep(1)
     ser = GetPort()
     try:
-#        SwitchMode(ser, True)  
+        SwitchMode(ser, True)  
 #        TestUSB(e, ser)
 #==================Get ip and socket dynamically==================
 #        TurnOnDHCP(e, ser)
 #        ip = GetIP(ser)
 #        sock = TestEthernet(ip) #'192.168.0.111'
 #=========================Use custom ip===========================
-        TCP_IP = '192.168.0.114'
+        TCP_IP = '172.16.5.71'
         TCP_PORT = 502
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect((TCP_IP, TCP_PORT))
@@ -73,10 +73,14 @@ def Test():
 #=================================================================
 #        TestUart(e, sock)
 #        TestISquareC(e, module)
-#        TestModbus(e, sock)
-#        TestLeftRs(e, sock)
-#        TestRightRs(e, sock)
-        TestClock(e, ser)
+        
+        TestModbus2(e, sock)
+        TestLeftRs(e, sock)
+        TestRightRs(e, sock)
+        logHeader("Подключите провод 5")
+        time.sleep(10)
+        TestModbus1(e, sock)
+#        TestClock(e, ser)
         sock.close()
     except Exception as ex:
         logString(ex)
@@ -84,6 +88,10 @@ def Test():
 #        SwitchMode(ser, False)
         ser.close()
 #        e.SpiSetPowerState(False)
+
+#i2c
+#правый модбас
+#светодиоды
 
 #==================================main==================================
 #ResetPower()

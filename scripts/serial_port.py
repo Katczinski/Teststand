@@ -20,6 +20,6 @@ def GetPort():
                         stopbits=serial.STOPBITS_ONE,\
                         bytesize=serial.EIGHTBITS,\
                         timeout=0)
-    except Exception as e:
-        logString(e)
+    except Exception as ex:
+        logString(ex)
     return None
