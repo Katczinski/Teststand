@@ -1,6 +1,7 @@
-from libd2xx import *
-from logger  import *
-from serial_port import *
+from libd2xx      import *
+from logger       import *
+from serial_port  import *
+from ethernet     import *
 import time
 
 def ModbusSetSlave(e, addr):
@@ -11,10 +12,12 @@ def ModbusSetSlave(e, addr):
     e.Modbus1SetSlave(chr(addr))
     e.Modbus2SetSlave(chr(addr))
 
-def TestModbus1(e, sock):
+def TestModbus1(e, ip):
     logHeader("Проверка Modbus 1")
     command = b'\x00\x38\x00\x00\x00\x06\x10\x04\x06\xA4\x00\x03'
     cmd = "\x01\x04\x06\x01\x02\x03\x04\x05\x06"
+    
+    sock = GetSocket(ip)
     try:
         e.Modbus1Purge()
         e.Modbus1SetBaudRate(115200)
@@ -39,6 +42,7 @@ def TestModbus1(e, sock):
 #        logString("sent: " + str(res))
         
         data = sock.recv(15)
+        sock.close()
         res = ' '.join(format(x, '02x') for x in data[6:])
 #        logString("read: " + str(res))
         time.sleep(1)
@@ -53,10 +57,12 @@ def TestModbus1(e, sock):
         logString(ex)
         return logResult("FAIL")
         
-def TestModbus2(e, sock):
+def TestModbus2(e, ip):
     logHeader("Проверка Modbus 2")
     command = b'\x00\x38\x00\x00\x00\x06\x10\x04\x06\xA4\x00\x03'
     cmd = "\x01\x04\x06\x01\x02\x03\x04\x05\x06"
+    
+    sock = GetSocket(ip)
     try:
         e.Modbus2Purge()
         e.Modbus2SetBaudRate(115200)
@@ -81,6 +87,7 @@ def TestModbus2(e, sock):
 #        logString("sent: " + str(res))
         
         data = sock.recv(15)
+        sock.close()
         res = ' '.join(format(x, '02x') for x in data[6:])
 #        logString("read: " + str(res))
         time.sleep(1)

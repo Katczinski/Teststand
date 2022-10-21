@@ -1,8 +1,9 @@
 import serial.tools.list_ports
 import time
 from logger import *
-from serial_port import *
-def TestUSB(e, ser):
+#from serial_port import *
+
+def TestUSB(ser):
     logHeader("Проверка USB")
 
     command = b'\xF0\x04\x06\xA4\x00\x03\xE4\x41'

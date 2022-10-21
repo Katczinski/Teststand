@@ -41,31 +41,33 @@ def TurnOnDHCP(e, ser):
     except Exception as e:
         logString(e) 
         
-def TestEthernet(TCP_IP):
-#    TCP_IP = '172.16.5.71'
-    TCP_PORT = 502
+def TestEthernet(ip):
+    port = 502
     is_ok = False
     MESSAGE = b'\x00\x38\x00\x00\x00\x06\xF0\x04\x06\xA4\x00\x03'
 
     logHeader("Проверка Ethernet")
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
+    logString("Подключение к " + ip + ":" + str(port))
+    sock = GetSocket(ip)
     try:
-        logString("Подключение к " + TCP_IP + ":" + str(TCP_PORT))
-        s.connect((TCP_IP, TCP_PORT))
-        s.send(MESSAGE)
-        s.settimeout(3.0)
-        data = s.recv(1024)
+        sock.send(MESSAGE)
+        sock.settimeout(1.0)
+        data = sock.recv(1024)
         print("Получен ответ " + str(data))
         if (len(data) > 14):
             if data[10] == 0x11 and data[12] == 0x22 and data[14] == 0x33:
                 is_ok = True
-    except Exception as e:
-        logString(e)
-#    s.close()
+    except Exception as ex:
+        logString(ex)
     if is_ok:
-        logResult("OK")
-        return s
+        return logResult("OK")
     else:
-        logResult("FAIL")
-        return None
+        return logResult("FAIL")
+
+def GetSocket(ip):
+    port = 502
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.connect((ip, port))
+    sock.settimeout(1.0)
+    return sock
+    

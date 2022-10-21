@@ -13,13 +13,9 @@ def GetPort():
         logResult("FAIL")
         return None
     print(port)
-    try:
-        return serial.Serial(port.name,
-                        baudrate=115200,\
-                        parity=serial.PARITY_NONE,\
-                        stopbits=serial.STOPBITS_ONE,\
-                        bytesize=serial.EIGHTBITS,\
-                        timeout=0)
-    except Exception as ex:
-        logString(ex)
-    return None
+    return serial.Serial(port.name,
+                    baudrate=115200,\
+                    parity=serial.PARITY_NONE,\
+                    stopbits=serial.STOPBITS_ONE,\
+                    bytesize=serial.EIGHTBITS,\
+                    timeout=0)

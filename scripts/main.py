@@ -8,6 +8,8 @@ from rs485        import *
 from serial_port  import *
 from uart         import *
 from clock        import *
+from retain       import *
+
 import time
 
 if len(sys.argv) > 2:
@@ -16,7 +18,7 @@ if len(sys.argv) > 2:
 else:
     module = 4
     modif = 4
-#============================definitions=================================
+#============================definitions==========================
 
 def PrintBytearray(array):
     res = ' '.join(format(x, '02x') for x in array)
@@ -26,8 +28,9 @@ def setPowerState(state):
     e = D2xx()
     e.SpiSetPowerState(state)
 
-def ResetPower():
-    e = D2xx()
+def ResetPower(e):
+    if not e:
+        e = D2xx()
     e.SpiSetPowerState(False)
     time.sleep(2.5)
     e.SpiSetPowerState(True)
@@ -39,62 +42,66 @@ def getD2xxStatus(e):
     logString(e.Modbus2GetStatus())
 
 def SwitchMode(ser, mode):
+    readMode = b'\xF0\x04\x23\x8C\x00\x01\xEE\x84'
     if mode:
         logHeader("Перевод в режим шлюза")
         message = b'\xF0\x10\x23\x96\x00\x01\x02\x01\x00\xA1\xA0'
+        exp = b'\x01\x00'
     else:
         logHeader("Перевод в режим исполнения алгоритма")
-        message = b'\xF0\x10\x23\x96\x00\x01\x02\x00\x00 A0\x30'
+        message = b'\xF0\x10\x23\x96\x00\x01\x02\x00\x00\xA0\x30'
+        exp = b'\x00\x00'
     try:
         ser.write(message)
+        time.sleep(2)
+        ser.read(100)
+        ser.write(readMode)
+        time.sleep(2)
+        sout = bytearray()
+        while ser.inWaiting() > 0:
+            sout.extend(ser.read(1))
+        if exp == sout[3:5]:
+            logResult("OK")
+        else:
+            logResult("FAIL")
     except Exception as e:
         logString(e)
-    ser.read(100)
 
 def Test():
     e = D2xx()
     getD2xxStatus(e)
     e.SpiSetPowerState(True)
     time.sleep(1)
-    ser = GetPort()
     try:
-        SwitchMode(ser, True)  
-#        TestUSB(e, ser)
+        ser = GetPort()
+#        SwitchMode(ser, True)  
 #==================Get ip and socket dynamically==================
 #        TurnOnDHCP(e, ser)
 #        ip = GetIP(ser)
-#        sock = TestEthernet(ip) #'192.168.0.111'
+#        TestEthernet(ip) #'192.168.0.111'
 #=========================Use custom ip===========================
-        TCP_IP = '172.16.5.71'
-        TCP_PORT = 502
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.connect((TCP_IP, TCP_PORT))
-        sock.settimeout(1.0)
+        ip = '192.168.0.121'
 #=================================================================
-#        TestUart(e, sock)
+#        TestUart(e, ip)
+#        TestUSB(ser)
 #        TestISquareC(e, module)
-        
-        TestModbus2(e, sock)
-        TestLeftRs(e, sock)
-        TestRightRs(e, sock)
-        logHeader("Подключите провод 5")
-        time.sleep(10)
-        TestModbus1(e, sock)
+#        TestModbus1(e, ip)
+#        TestModbus2(e, ip)
+        TestLeftRs(e, ip)
+        ResetPower(e)
+        TestRightRs(e, ip) 
 #        TestClock(e, ser)
-        sock.close()
-    except Exception as ex:
-        logString(ex)
-    finally:
+#        TestRetain(ser)
+
 #        SwitchMode(ser, False)
         ser.close()
+    except Exception as ex:
+        logString(ex)
+#    finally:
 #        e.SpiSetPowerState(False)
 
-#i2c
-#правый модбас
-#светодиоды
-
-#==================================main==================================
-#ResetPower()
+#===============================main===============================
+#ResetPower(None)
 Test()
 #setPowerState(False)
 #setPowerState(True)
