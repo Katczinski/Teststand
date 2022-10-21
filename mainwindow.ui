@@ -19,14 +19,21 @@
      <layout class="QHBoxLayout" name="centralLayout">
       <item>
        <layout class="QGridLayout" name="gridLayout_3">
-        <item row="2" column="0" colspan="2">
-         <widget class="QLabel" name="label_3">
+        <item row="7" column="0" colspan="2">
+         <widget class="QLineEdit" name="serialnum">
           <property name="text">
-           <string>Модификация (argv[2])</string>
+           <string>0</string>
           </property>
          </widget>
         </item>
-        <item row="8" column="0" colspan="2">
+        <item row="12" column="0" colspan="2">
+         <widget class="QCheckBox" name="flash">
+          <property name="text">
+           <string>Прошивка</string>
+          </property>
+         </widget>
+        </item>
+        <item row="10" column="0" colspan="2">
          <spacer name="verticalSpacer">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -39,42 +46,6 @@
           </property>
          </spacer>
         </item>
-        <item row="5" column="0" colspan="2">
-         <widget class="QLineEdit" name="serialnum">
-          <property name="text">
-           <string>0</string>
-          </property>
-         </widget>
-        </item>
-        <item row="11" column="0" colspan="2">
-         <widget class="QPushButton" name="start">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>20</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>Запуск</string>
-          </property>
-         </widget>
-        </item>
-        <item row="10" column="0" colspan="2">
-         <widget class="QCheckBox" name="flash">
-          <property name="text">
-           <string>Прошивка</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0" colspan="2">
-         <widget class="QComboBox" name="module">
-          <item>
-           <property name="text">
-            <string>4 - kB-EG</string>
-           </property>
-          </item>
-         </widget>
-        </item>
         <item row="0" column="0" colspan="2">
          <widget class="QLabel" name="label_2">
           <property name="text">
@@ -82,10 +53,27 @@
           </property>
          </widget>
         </item>
-        <item row="6" column="0" colspan="2">
-         <widget class="QLabel" name="label_5">
+        <item row="9" column="0" colspan="2">
+         <widget class="QLineEdit" name="mac">
           <property name="text">
-           <string>MAC-адрес</string>
+           <string>00-FF-38-34-96-A5</string>
+          </property>
+         </widget>
+        </item>
+        <item row="11" column="0" colspan="2">
+         <widget class="QCheckBox" name="test">
+          <property name="text">
+           <string>Проверка</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="0" colspan="2">
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>Серийный номер</string>
           </property>
          </widget>
         </item>
@@ -98,27 +86,56 @@
           </item>
          </widget>
         </item>
+        <item row="2" column="0" colspan="2">
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>Модификация (argv[2])</string>
+          </property>
+         </widget>
+        </item>
         <item row="4" column="0" colspan="2">
-         <widget class="QLabel" name="label_4">
+         <widget class="QLabel" name="label">
           <property name="text">
-           <string>Серийный номер</string>
+           <string>Шифр</string>
           </property>
          </widget>
         </item>
-        <item row="7" column="0" colspan="2">
-         <widget class="QLineEdit" name="mac">
+        <item row="8" column="0" colspan="2">
+         <widget class="QLabel" name="label_5">
           <property name="text">
-           <string>00-FF-38-34-96-A5</string>
+           <string>MAC-адрес</string>
           </property>
          </widget>
         </item>
-        <item row="9" column="0" colspan="2">
-         <widget class="QCheckBox" name="test">
-          <property name="text">
-           <string>Проверка</string>
+        <item row="1" column="0" colspan="2">
+         <widget class="QComboBox" name="module">
+          <item>
+           <property name="text">
+            <string>4 - kB-EG</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="13" column="0" colspan="2">
+         <widget class="QPushButton" name="start">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>20</height>
+           </size>
           </property>
-          <property name="checked">
-           <bool>true</bool>
+          <property name="text">
+           <string>Запуск</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0" colspan="2">
+         <widget class="QLineEdit" name="cipher">
+          <property name="text">
+           <string>4111150302111120</string>
+          </property>
+          <property name="maxLength">
+           <number>16</number>
           </property>
          </widget>
         </item>
