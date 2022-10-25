@@ -194,7 +194,7 @@ public:
         module->setItemText(0, QCoreApplication::translate("MainWindow", "4 - kB-EG", nullptr));
 
         start->setText(QCoreApplication::translate("MainWindow", "\320\227\320\260\320\277\321\203\321\201\320\272", nullptr));
-        cipher->setText(QCoreApplication::translate("MainWindow", "4111150302111120", nullptr));
+        cipher->setText(QCoreApplication::translate("MainWindow", "4111150302111110", nullptr));
     } // retranslateUi
 
 };
