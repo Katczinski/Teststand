@@ -9,6 +9,7 @@ from serial_port  import *
 from uart         import *
 from clock        import *
 from retain       import *
+from led          import *
 
 import time
 
@@ -80,19 +81,19 @@ def Test():
 #        ip = GetIP(ser)
 #        TestEthernet(ip) #'192.168.0.111'
 #=========================Use custom ip===========================
-        ip = '192.168.0.121'
+        ip = '192.168.0.124'
 #=================================================================
 #        TestUart(e, ip)
 #        TestUSB(ser)
 #        TestISquareC(e, module)
 #        TestModbus1(e, ip)
 #        TestModbus2(e, ip)
-        TestLeftRs(e, ip)
-        ResetPower(e)
-        TestRightRs(e, ip) 
+#        TestLeftRs(e, ip)
+#        TestRightRs(e, ip) 
 #        TestClock(e, ser)
-#        TestRetain(ser)
-
+#        TestRetain(e, ser)
+        TestGreenLed(ser)
+        TestRedLed(ser)
 #        SwitchMode(ser, False)
         ser.close()
     except Exception as ex:
