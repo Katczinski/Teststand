@@ -106,6 +106,7 @@ public:
         modification = new QComboBox(centralwidget);
         modification->addItem(QString());
         modification->addItem(QString());
+        modification->addItem(QString());
         modification->setObjectName(QString::fromUtf8("modification"));
 
         gridLayout_3->addWidget(modification, 3, 0, 1, 2);
@@ -188,7 +189,8 @@ public:
         test->setText(QCoreApplication::translate("MainWindow", "\320\237\321\200\320\276\320\262\320\265\321\200\320\272\320\260", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "\320\241\320\265\321\200\320\270\320\271\320\275\321\213\320\271 \320\275\320\276\320\274\320\265\321\200", nullptr));
         modification->setItemText(0, QCoreApplication::translate("MainWindow", "2", nullptr));
-        modification->setItemText(1, QCoreApplication::translate("MainWindow", "4", nullptr));
+        modification->setItemText(1, QCoreApplication::translate("MainWindow", "3", nullptr));
+        modification->setItemText(2, QCoreApplication::translate("MainWindow", "4", nullptr));
 
         label_3->setText(QCoreApplication::translate("MainWindow", "\320\234\320\276\320\264\320\270\321\204\320\270\320\272\320\260\321\206\320\270\321\217 (argv[2])", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "\320\250\320\270\321\204\321\200", nullptr));
