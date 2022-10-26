@@ -81,6 +81,11 @@
          <widget class="QComboBox" name="modification">
           <item>
            <property name="text">
+            <string>2</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
             <string>4</string>
            </property>
           </item>
@@ -132,7 +137,7 @@
         <item row="5" column="0" colspan="2">
          <widget class="QLineEdit" name="cipher">
           <property name="text">
-           <string>4111150302111110</string>
+           <string>4111150000111110</string>
           </property>
           <property name="maxLength">
            <number>16</number>

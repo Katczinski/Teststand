@@ -41,6 +41,8 @@ public:
 private slots:
     void on_start_clicked();
 
+    void on_modification_currentIndexChanged(int index);
+
 private:
     void parseLine(QString line);
     void createActions();
@@ -65,6 +67,12 @@ private:
     Results_Window  *results_window;
     TestsCounter    tests_counter;
     bool            fail = false;
+    QStringList     cipher = {
+                    "",
+                    "4111150000111110",
+                    "",
+                    "4111150302111220"
+    };
 
 
 };

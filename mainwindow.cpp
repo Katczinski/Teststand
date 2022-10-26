@@ -194,7 +194,7 @@ void MainWindow::start()
     started = true;
     QEventLoop loop;
     QProcess *process = new QProcess();
-    QString cmd = "python";
+    QString cmd = "scripts/Python37/python";
     QString args = "-u " + curFile + " " + ui->module->currentText()[0] + " " + ui->modification->currentText(); // -u for disabling stdout buffering
     auto lambda = connect(results_window, &Results_Window::windowClosed, process, &QProcess::kill);
     connect(process, &QProcess::readyRead, [this, &process](){
@@ -263,10 +263,11 @@ void MainWindow::flash()
     QString oocd_dir = "flash\\oocd";
     process->setWorkingDirectory(oocd_dir);
     QString cmd = oocd_dir + "\\openocd.exe";
+    int type = ui->module->currentText().split(" - ")[0].toInt();
     QString args = QString("-f target\\komega_basic\\init.cfg \
-                    -c \"program ../firmware/") + ui->modification->currentText() + QString("b.hex verify\" \
+                    -c \"program ../firmware/") + QString::number(type) + QString("b.hex verify\" \
                     -c \"program ../firmware/cipher.bin verify 0x100FE000\" \
-                    -c \"program ../firmware/") + ui->modification->currentText() + QString(".hex verify\" \
+                    -c \"program ../firmware/") + QString::number(type) + QString(".hex verify\" \
                     -f target\\komega_basic\\finish.cfg");
     bool is_ok = true;
 
@@ -339,5 +340,12 @@ void MainWindow::on_start_clicked()
     results->append("\nПродолжительность теста: " + elapsed.toString("mm:ss"));
     results->ScrollToEnd();
     results->setTextInteractionFlags(Qt::TextBrowserInteraction);
+}
+
+
+void MainWindow::on_modification_currentIndexChanged(int index)
+{
+    int modif = ui->modification->currentText().toInt();
+    ui->cipher->setText(cipher[modif - 1]);
 }
 

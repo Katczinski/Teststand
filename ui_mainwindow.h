@@ -105,6 +105,7 @@ public:
 
         modification = new QComboBox(centralwidget);
         modification->addItem(QString());
+        modification->addItem(QString());
         modification->setObjectName(QString::fromUtf8("modification"));
 
         gridLayout_3->addWidget(modification, 3, 0, 1, 2);
@@ -186,7 +187,8 @@ public:
         mac->setText(QCoreApplication::translate("MainWindow", "00-FF-38-34-96-A5", nullptr));
         test->setText(QCoreApplication::translate("MainWindow", "\320\237\321\200\320\276\320\262\320\265\321\200\320\272\320\260", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "\320\241\320\265\321\200\320\270\320\271\320\275\321\213\320\271 \320\275\320\276\320\274\320\265\321\200", nullptr));
-        modification->setItemText(0, QCoreApplication::translate("MainWindow", "4", nullptr));
+        modification->setItemText(0, QCoreApplication::translate("MainWindow", "2", nullptr));
+        modification->setItemText(1, QCoreApplication::translate("MainWindow", "4", nullptr));
 
         label_3->setText(QCoreApplication::translate("MainWindow", "\320\234\320\276\320\264\320\270\321\204\320\270\320\272\320\260\321\206\320\270\321\217 (argv[2])", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "\320\250\320\270\321\204\321\200", nullptr));
@@ -194,7 +196,7 @@ public:
         module->setItemText(0, QCoreApplication::translate("MainWindow", "4 - kB-EG", nullptr));
 
         start->setText(QCoreApplication::translate("MainWindow", "\320\227\320\260\320\277\321\203\321\201\320\272", nullptr));
-        cipher->setText(QCoreApplication::translate("MainWindow", "4111150302111110", nullptr));
+        cipher->setText(QCoreApplication::translate("MainWindow", "4111150000111110", nullptr));
     } // retranslateUi
 
 };
