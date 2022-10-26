@@ -10,15 +10,17 @@ from uart         import *
 from clock        import *
 from retain       import *
 from led          import *
-
+from reset        import *
+from interrupt    import *
 import time
 
-if len(sys.argv) > 2:
-    module = sys.argv[1]    # 4
-    modif  = sys.argv[2]    # 4
-else:
-    module = 4
-    modif = 4
+module = "4"
+modif = "2"
+
+if len(sys.argv) > 1:
+    module = sys.argv[1]
+    modif  = sys.argv[2]
+
 #============================definitions==========================
 
 def PrintBytearray(array):
@@ -75,25 +77,29 @@ def Test():
     time.sleep(1)
     try:
         ser = GetPort()
+        TestReset(e)
 #        SwitchMode(ser, True)  
 #==================Get ip and socket dynamically==================
 #        TurnOnDHCP(e, ser)
 #        ip = GetIP(ser)
-#        TestEthernet(ip) #'192.168.0.111'
+#        TestEthernet(ip)
 #=========================Use custom ip===========================
-        ip = '192.168.0.124'
+        ip = '172.16.5.71'
 #=================================================================
 #        TestUart(e, ip)
+        TestInterrupt(e, ser)
 #        TestUSB(ser)
 #        TestISquareC(e, module)
 #        TestModbus1(e, ip)
 #        TestModbus2(e, ip)
-#        TestLeftRs(e, ip)
-#        TestRightRs(e, ip) 
+#        if modif == "1" or modif == "2" or modif == "3":
+#            TestLeftRs(e, ip)
+#        if modif == "1" or modif == "2":
+#            TestRightRs(e, ip) 
 #        TestClock(e, ser)
 #        TestRetain(e, ser)
-        TestGreenLed(ser)
-        TestRedLed(ser)
+#        TestGreenLed(ser)
+#        TestRedLed(ser)
 #        SwitchMode(ser, False)
         ser.close()
     except Exception as ex:
@@ -103,6 +109,6 @@ def Test():
 
 #===============================main===============================
 #ResetPower(None)
-Test()
+#Test()
 #setPowerState(False)
-#setPowerState(True)
+setPowerState(True)
