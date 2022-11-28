@@ -33,7 +33,7 @@ IDC           = idc
 IDL           = midl
 ZIP           = zip -r -9
 DEF_FILE      = 
-RES_FILE      = 
+RES_FILE      = Teststand_resource_res.o
 SED           = $(QMAKE) -install sed
 MOVE          = move
 SUBTARGETS    =  \
@@ -257,6 +257,7 @@ Makefile: Teststand.pro C:/Qt/5.15.2/mingw81_32/mkspecs/win32-g++/qmake.conf C:/
 		C:/Qt/5.15.2/mingw81_32/lib/Qt5QmlModels.prl \
 		C:/Qt/5.15.2/mingw81_32/lib/Qt5Qml.prl \
 		C:/Qt/5.15.2/mingw81_32/lib/Qt5Network.prl \
+		C:/Qt/5.15.2/mingw81_32/lib/Qt5SerialPort.prl \
 		C:/Qt/5.15.2/mingw81_32/lib/Qt5Core.prl \
 		C:/Qt/5.15.2/mingw81_32/lib/qtmain.prl \
 		C:/Qt/5.15.2/mingw81_32/mkspecs/features/build_pass.prf \
@@ -449,6 +450,7 @@ C:/Qt/5.15.2/mingw81_32/lib/Qt5Gui.prl:
 C:/Qt/5.15.2/mingw81_32/lib/Qt5QmlModels.prl:
 C:/Qt/5.15.2/mingw81_32/lib/Qt5Qml.prl:
 C:/Qt/5.15.2/mingw81_32/lib/Qt5Network.prl:
+C:/Qt/5.15.2/mingw81_32/lib/Qt5SerialPort.prl:
 C:/Qt/5.15.2/mingw81_32/lib/Qt5Core.prl:
 C:/Qt/5.15.2/mingw81_32/lib/qtmain.prl:
 C:/Qt/5.15.2/mingw81_32/mkspecs/features/build_pass.prf:
