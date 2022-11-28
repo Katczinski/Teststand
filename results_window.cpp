@@ -33,6 +33,14 @@ Results_Window::Results_Window(Results_Logger* pLogger)
     main_layout->addLayout(left_layout);
     main_layout->addLayout(right_layout);
 }
+
+Results_Window::~Results_Window()
+{
+    delete view;
+    delete left_layout;
+    delete right_layout;
+}
+
 QImage Results_Window::GrabScreenshot()
 {
    for (int i = 0; i< 10; ++i)

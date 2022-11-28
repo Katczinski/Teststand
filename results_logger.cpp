@@ -19,6 +19,8 @@ Results_Logger::Results_Logger(QWidget *parent) : QTextEdit(parent)
 void Results_Logger::Start()
 {
     clear();
+    tests_counter.button_restart->setEnabled(false);
+    tests_counter.Reset();
     setTextInteractionFlags(Qt::NoTextInteraction);
 }
 
@@ -67,15 +69,20 @@ void Results_Logger::Stop(/*QImage image, int type, bool result*/)
 //        Popup(fail_message);
 }
 
-void Results_Logger::LogResult(const QString &text)
+void Results_Logger::LogResult(const QString &text)     // corporate needs you to find the difference between these two functions
 {
+    if (text == SPAN_OK)
+        tests_counter.AddTest(true);
+    else if (text == SPAN_FAIL)
+        tests_counter.AddTest(false);
+
     append("<span style='color: darkgrey'>" +
            QDateTime::currentDateTime().toString("mm.ss: ") +
            "</span>" +
            text);
 }
 
-void Results_Logger::LogString(const QString &text)
+void Results_Logger::LogString(const QString &text)     // they are the same function
 {
     append("<span style='color: darkgrey'>" +
            QDateTime::currentDateTime().toString("mm.ss: ") +
@@ -100,4 +107,10 @@ void Results_Logger::ScrollToEnd()
 void Results_Logger::ScrollToBeginning()
 {
     verticalScrollBar()->setValue(verticalScrollBar()->minimum());
+}
+
+void Results_Logger::Result()
+{
+    tests_counter.Result();
+    tests_counter.button_restart->setEnabled(true);
 }

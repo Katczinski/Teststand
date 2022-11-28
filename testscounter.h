@@ -26,7 +26,7 @@ public:
     }table_items;
     QPushButton *button_restart = new QPushButton("Перезапуск", this);
     QPushButton *button_close = new QPushButton("Закрыть", this);
-    QLabel *buttons_label = new QLabel("", this);
+//    QLabel *buttons_label = new QLabel("", this);
 
 };
 

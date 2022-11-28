@@ -1,7 +1,7 @@
-QT       += core gui widgets network quick
+QT       += core gui widgets network quick serialport
 
 CONFIG += c++17
-
+RC_ICONS = kt.test.ico
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
@@ -22,6 +22,7 @@ SOURCES += \
     CodeEditor/QStyleSyntaxHighlighter.cpp \
     CodeEditor/QSyntaxStyle.cpp \
     CodeEditor/QXMLHighlighter.cpp \
+    crc.cpp \
     flash/form_bin_file.cpp \
     flash/get_adv_cipher.cpp \
     komega_type_to_text.cpp \
@@ -50,6 +51,7 @@ HEADERS += \
     CodeEditor/QStyleSyntaxHighlighter.hpp \
     CodeEditor/QSyntaxStyle.hpp \
     CodeEditor/QXMLHighlighter.hpp \
+    crc.h \
     flash/form_bin_file.h \
     flash/get_adv_cipher.h \
     komega_type_to_text.h \
@@ -71,6 +73,8 @@ INCLUDEPATH += $$PWD/CodeEditor $$PWD/flash
 
 RESOURCES += \
     CodeEditor/resources/qcodeeditor_resources.qrc
+
+LIBS += -L$$PWD/external/OpenSSL-Win32/bin -llibcrypto-1_1 -llibssl-1_1
 
 DISTFILES += \
     CodeEditor/resources/default_style.xml \

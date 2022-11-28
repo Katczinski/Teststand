@@ -178,6 +178,7 @@ protected:
      * 4. Auto parenthesis
      */
     void keyPressEvent(QKeyEvent* e) override;
+    void keyReleaseEvent(QKeyEvent* e) override;
 
     /**
      * @brief Method, that's called on focus into widget.
@@ -185,11 +186,12 @@ protected:
      * completer.
      */
     void focusInEvent(QFocusEvent *e) override;
-
+    void mousePressEvent(QMouseEvent *e) override;
     void mouseDoubleClickEvent(QMouseEvent *e) override;
 
 signals:
     void includeFileClicked(QString text);
+    void functionClicked(QString text);
 
 private:
 
