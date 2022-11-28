@@ -12,14 +12,14 @@ bool Form_bin_file(QStringList info)
     int modification = info[2].toInt();
     int type = info[3].toInt();
     if (type == 4) {
-        if (info.size() < 5)
+        if (info.size() < 6)
             return false;
         kb_eg to_bin;
         to_bin.serialnum = serial_number;
         to_bin.rev = 1;
         to_bin.since_epoch = (int32_t)QDateTime::currentDateTime().toSecsSinceEpoch();
         to_bin.modif = modification;
-        for (int i = 0; i < cipher.size(); ++i){
+        for (int i = 0; i < 16; ++i){
             int num = cipher[i].toLatin1();
             if(num >= '0' && num <= '9')
                 to_bin.cipher[i] = num - '0';
@@ -33,39 +33,18 @@ bool Form_bin_file(QStringList info)
             }
         }
         for (int i = 0; i < 12; ++i)
-            to_bin.ext_cipher[i] = i;
+            to_bin.ext_cipher[i] = 0;
 //        info[4].remove("-");
-        QStringList split = info[4].split('-');
+        QStringList split = info[4].split(':');
         if (split.size() < 6)
             return false;
         for (int i = 0; i < 6; ++i)
             to_bin.mac[i] = split[i].toInt(nullptr, 16);
+        to_bin.unique_id = info[5].toUInt();
         QFile cipher_f("flash/firmware/cipher.bin");
         cipher_f.open(QIODevice::WriteOnly);
         cipher_f.write(reinterpret_cast<char*>(&to_bin), sizeof(to_bin));
         cipher_f.close();
-//        split = info[5].split('.');
-//        if (split.size() < 4)
-//            return false;
-//        bin_ip ip_file;
-//        ip_file.ip = (split[0].toInt() << 0) + (split[1].toInt() << 8) + (split[2].toInt() << 16) + (split[3].toInt() << 24);
-//        split.clear();
-//        split = info[6].split('.');
-//        if (split.size() < 4)
-//            return false;
-//        ip_file.mask = (split[0].toInt() << 0) + (split[1].toInt() << 8) + (split[2].toInt() << 16) + (split[3].toInt() << 24);
-//        split.clear();
-//        split = info[7].split('.');
-//        if (split.size() < 4)
-//            return false;
-//        ip_file.gateway = (split[0].toInt() << 0) + (split[1].toInt() << 8) + (split[2].toInt() << 16) + (split[3].toInt() << 24);
-////        ip_file.info[0] = 0;
-////        ip_file.info[1] = 0;
-//        QFile ip_f("flash/firmware/ip.bin");
-//        ip_f.open(QIODevice::WriteOnly);
-//        ip_f.write(reinterpret_cast<char*>(&ip_file), sizeof(ip_file));
-//        ip_f.close();
-
     } else {
         QVector<int32_t> to_bin {};
         for (auto x : cipher){
