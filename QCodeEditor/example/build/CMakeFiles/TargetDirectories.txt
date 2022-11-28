@@ -1,3 +1,0 @@
-C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/build/CMakeFiles/QCodeEditorExample.dir
-C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/balkunov/Desktop/Projects/Teststand/QCodeEditor/example/build/CMakeFiles/ZERO_CHECK.dir
