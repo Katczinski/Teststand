@@ -18,10 +18,10 @@ echo on
 qmake Teststand.pro
 mingw32-make -f Makefile.Release
 for %%f in (!OpenSSL!*.dll) DO copy "%%f" !release!
-copy !d2xx!D2xx.dll !release!
-xcopy ..\flash !release!flash /s /e /y /I
-xcopy ..\scripts !release!scripts /s /e /y /I
-xcopy ..\images !release!images /s /e /y /I
+copy !d2xx!libd2xx.dll !release!
+xcopy flash !release!flash /s /e /y /I
+xcopy scripts !release!scripts /s /e /y /I
+xcopy images !release!images /s /e /y /I
 for %%f in (!release!*.o) DO del %%f
 for %%f in (!release!moc_*) DO del %%f
 windeployqt release\Teststand.exe
