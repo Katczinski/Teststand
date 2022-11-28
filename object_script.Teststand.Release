@@ -13,10 +13,16 @@ release/QPythonHighlighter.o
 release/QStyleSyntaxHighlighter.o
 release/QSyntaxStyle.o
 release/QXMLHighlighter.o
+release/crc.o
 release/form_bin_file.o
 release/get_adv_cipher.o
+release/komega_type_to_text.o
 release/main.o
 release/mainwindow.o
+release/popup.o
+release/results_logger.o
+release/results_window.o
+release/testscounter.o
 release/qrc_qcodeeditor_resources.o
 release/moc_QCXXHighlighter.o
 release/moc_QCodeEditor.o
@@ -34,3 +40,5 @@ release/moc_QSyntaxStyle.o
 release/moc_QXMLHighlighter.o
 release/moc_get_adv_cipher.o
 release/moc_mainwindow.o
+release/moc_results_logger.o
+release/moc_results_window.o

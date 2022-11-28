@@ -13,10 +13,16 @@ debug/QPythonHighlighter.o
 debug/QStyleSyntaxHighlighter.o
 debug/QSyntaxStyle.o
 debug/QXMLHighlighter.o
+debug/crc.o
 debug/form_bin_file.o
 debug/get_adv_cipher.o
+debug/komega_type_to_text.o
 debug/main.o
 debug/mainwindow.o
+debug/popup.o
+debug/results_logger.o
+debug/results_window.o
+debug/testscounter.o
 debug/qrc_qcodeeditor_resources.o
 debug/moc_QCXXHighlighter.o
 debug/moc_QCodeEditor.o
@@ -34,3 +40,5 @@ debug/moc_QSyntaxStyle.o
 debug/moc_QXMLHighlighter.o
 debug/moc_get_adv_cipher.o
 debug/moc_mainwindow.o
+debug/moc_results_logger.o
+debug/moc_results_window.o
