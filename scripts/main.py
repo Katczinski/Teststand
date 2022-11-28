@@ -16,16 +16,12 @@ import time
 
 module = "4"
 modif = "2"
-
+ 
 if len(sys.argv) > 1:
     module = sys.argv[1]
     modif  = sys.argv[2]
 
 #============================definitions==========================
-
-def PrintBytearray(array):
-    res = ' '.join(format(x, '02x') for x in array)
-    logString("array: " + str(res))
 
 def setPowerState(state):
     e = D2xx()
@@ -37,6 +33,7 @@ def ResetPower(e):
     e.SpiSetPowerState(False)
     time.sleep(2.5)
     e.SpiSetPowerState(True)
+    time.sleep(2.5)
 
 def getD2xxStatus(e):
     logString(e.FtdiGetStatus())
@@ -55,6 +52,7 @@ def SwitchMode(ser, mode):
         message = b'\xF0\x10\x23\x96\x00\x01\x02\x00\x00\xA0\x30'
         exp = b'\x00\x00'
     try:
+        ser.read(100)
         ser.write(message)
         time.sleep(2)
         ser.read(100)
@@ -73,39 +71,38 @@ def SwitchMode(ser, mode):
 def Test():
     e = D2xx()
     getD2xxStatus(e)
-    e.SpiSetPowerState(True)
-    time.sleep(1)
+    ResetPower(e)
     try:
         ser = GetPort()
-        TestReset(e)
-#        SwitchMode(ser, True)  
+        SwitchMode(ser, True)  
 #==================Get ip and socket dynamically==================
-#        TurnOnDHCP(e, ser)
-#        ip = GetIP(ser)
-#        TestEthernet(ip)
+        TurnOnDHCP(e, ser)
+        ip = GetIP(ser)
+        TestEthernet(ip)
 #=========================Use custom ip===========================
-        ip = '172.16.5.71'
+#        ip = '172.16.5.71'
 #=================================================================
-#        TestUart(e, ip)
+        TestReset(e, ser)
         TestInterrupt(e, ser)
-#        TestUSB(ser)
-#        TestISquareC(e, module)
-#        TestModbus1(e, ip)
-#        TestModbus2(e, ip)
-#        if modif == "1" or modif == "2" or modif == "3":
-#            TestLeftRs(e, ip)
-#        if modif == "1" or modif == "2":
-#            TestRightRs(e, ip) 
-#        TestClock(e, ser)
-#        TestRetain(e, ser)
-#        TestGreenLed(ser)
-#        TestRedLed(ser)
-#        SwitchMode(ser, False)
+        TestUSB(ser)
+        TestISquareC(e, module)
+        TestModbus1(e, ip)
+        TestModbus2(e, ip)
+        if modif == "1" or modif == "2" or modif == "3":
+            TestLeftRs(e, ip)
+        if modif == "1" or modif == "2":
+            TestRightRs(e, ip) 
+        TestClock(e, ser)
+        TestRetain(e, ser)
+        TestGreenLed(ser)
+        TestRedLed(ser)
+        SwitchMode(ser, False)
         ser.close()
     except Exception as ex:
         logString(ex)
-#    finally:
-#        e.SpiSetPowerState(False)
+        logResult("FAIL")
+    finally:
+        e.SpiSetPowerState(False)
 
 #===============================main===============================
 #ResetPower(None)

@@ -1,7 +1,7 @@
 import socket
 import time
 import serial.tools.list_ports
-
+from utils import *
 from serial_port import *
 from logger import *
 
@@ -9,12 +9,14 @@ def GetIP(ser):
     logHeader("Получение IP")
     command = b'\xF0\x03\x13\xEC\x00\x14\x95\x95'
     try:
+        ser.read(100)
         ser.write(command)
         time.sleep(2)
         sout = bytearray()
         while ser.inWaiting() > 0:
             sout.extend(ser.read(1))
         ip = ""
+#        PrintBytearray(sout)
         for x in sout[8:16:2]:
             ip += str(x) + "."
         logString("Получен ip " + ip[:-1])
@@ -29,15 +31,17 @@ def TurnOnDHCP(e, ser):
     logHeader("Включение DHCP")
     command = b'\xF0\x10\x13\xEC\x00\x02\x04\x00\x01\x00\x01\xB3\x7D'
     try:
+        ser.read(100)
         ser.write(command)
         time.sleep(2)
         ser.read(100)
-        time.sleep(7)
+        time.sleep(10)
         e.SpiSetPowerState(False)
         time.sleep(2.5)
         e.SpiSetPowerState(True)
+        time.sleep(2)
         ser.read(100)
-        time.sleep(7)
+        time.sleep(8)
     except Exception as e:
         logString(e) 
         

@@ -36,7 +36,7 @@ def TestClock(e, ser):
         finish = int.from_bytes(sout[14:16:2], "big")
         print("elapsed time: " + str(finish - start) + " sec")
         SwitchBatteryMode(ser, False)
-        if (finish - start == 6) or (finish - start == 5): #should be 6 but sometimes it's 5 smh
+        if (finish - start >= 5): #should be 6 but sometimes it's 5 smh
             return logResult("OK")
         else:
             return logResult("FAIL")

@@ -1,5 +1,5 @@
 def logResult(text):
-    print("result: " + str(text))    # OK if test has passed, FAIL if not
+    print("result: " + str(text))    # "OK" if test has passed, "FAIL" if not
     
 def logHeader(text):
     print("header: " + str(text))    # any text

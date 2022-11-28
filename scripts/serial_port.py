@@ -13,9 +13,11 @@ def GetPort():
         logResult("FAIL")
         return None
     print(port)
-    return serial.Serial(port.name,
+    ser = serial.Serial(port.name,
                     baudrate=115200,\
                     parity=serial.PARITY_NONE,\
                     stopbits=serial.STOPBITS_ONE,\
                     bytesize=serial.EIGHTBITS,\
                     timeout=0)
+    ser.read(100)
+    return ser
